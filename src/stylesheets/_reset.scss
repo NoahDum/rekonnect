@@ -1,0 +1,31 @@
+@use "variables" as v;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    // Rédéfinir la taille par défaut d'1 rem à 10px plutôt que 16px
+    font-size: 62.5%;
+}
+
+body {
+    // On rédéfinit une taille par défaut à 16px
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6rem;
+    margin: 0;
+    padding: 0;
+    background-color: v.$color-secondary;
+}
+
+.avatar{
+    img{
+        border-radius: 50%;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+}

@@ -1,0 +1,236 @@
+@use "variables" as v;
+@use "mixins" as m;
+@use "reset";
+
+@keyframes logo_rotate_splash {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.login-container {
+  display: flex;
+  align-items: center;
+  max-width: 100vw;
+  height: 100vh;
+
+  @media (max-width: v.$md-breakpoint) {
+    flex-direction: column;
+  }
+
+  .bg_login {
+    flex-basis: 40%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      @media (max-width: v.$md-breakpoint) {
+        
+        width: 100vw;
+        height: 40Vh;
+      }
+
+    }
+  }
+
+  .login-contain {
+    background-color: white;
+    flex-basis: 60%;
+    /* width: 60%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media (max-width: v.$md-breakpoint) {
+      width: 100%;
+    }
+    @media (min-width: v.$md-breakpoint) {
+      height: 100%;
+    }
+
+  }
+}
+
+.splash_screen {
+  width: 100vw;
+  height: 100vh;
+  background-color: v.$color-primary;
+
+  .title_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      color: v.$color-white;
+      font-size: 10rem;
+      font-weight: bold;
+      -webkit-text-stroke: 0.1rem black;
+      // text-shadow: -1px 1px 2px #000, 1px 2px 6px #000, 1px -1px 0 #000,
+      //   -1px -1px 0 #000;
+
+      @media (max-width: v.$md-breakpoint) {
+        font-size: 5rem;
+        margin-top: 25vh;
+      }
+    }
+
+    img {
+      width: 8rem;
+      height: 8rem;
+      margin-left: 0.5rem;
+      animation-name: logo_rotate;
+      animation-duration: 2s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+
+      @media (max-width: v.$md-breakpoint) {
+        margin-top: 19vh;
+        width: 5rem;
+        height: 5rem;
+      }
+    }
+  }
+
+  .loading {
+    width: 100vw;
+    text-align: center;
+    font-size: 5rem;
+    color: v.$color-white;
+    -webkit-text-stroke: 0.1rem black;
+    // text-shadow: -1px 1px 2px #000, 1px 2px 6px #000, 1px -1px 0 #000,
+    //   -1px -1px 0 #000;
+  }
+}
+
+.bg_login {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 4rem;
+  color: v.$color-white;
+  h1{
+    color: v.$color-primary;
+  }
+  // text-shadow: -1px 1px 2px v.$color-primary, 1px 2px 6px v.$color-primary,
+  //   1px -1px 0 v.$color-primary, -1px -1px 0 v.$color-primary;
+}
+
+.form_login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  .form_group {
+    display: flex;
+
+    @media (max-width: v.$md-breakpoint) {
+      flex-direction: column;
+    }
+
+    .form_item {
+      padding: 0 2rem;
+
+      input {
+        width: 40rem;
+        height: 5rem;
+        background: transparent;
+        font-weight: bold;
+        font-size: 1.5rem;
+        border: none;
+        border-bottom: v.$color-primary solid 0.1rem;
+
+        @media (max-width: v.$md-breakpoint) {
+          width: 35rem;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .check_item {
+      text-align: center;
+      margin: 1rem 2rem 0 2rem;
+      font-weight: bold;
+
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      img {
+        width: 5rem;
+        height: 5rem;
+      }
+    }
+  }
+
+  input {
+    width: 50rem;
+    height: 5rem;
+    background: transparent;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border: none;
+    border-bottom: v.$color-primary solid 0.1rem;
+
+    @media (max-width: v.$md-breakpoint) {
+      width: 30rem;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .no_account {
+    color: v.$color-black;
+
+    a {
+      text-decoration: none;
+      color: v.$color-black;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .submit_login {
+    width: 30rem;
+    border: v.$color-primary solid 0.1rem;
+    border-radius: 0.5rem;
+
+    @media (max-width: v.$md-breakpoint) {
+      width: 20rem;
+    }
+
+    &:hover {
+      background-color: v.$color-primary;
+      color: v.$color-white;
+    }
+  }
+
+  .forgot_pwd {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

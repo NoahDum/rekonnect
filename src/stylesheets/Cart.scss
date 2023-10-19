@@ -1,0 +1,62 @@
+@use "variables" as v;
+@use "mixins" as m;
+@use "reset";
+
+.cart {
+  h1 {
+    color: v.$color-black;
+  }
+
+  .total {
+    text-align: center;
+  }
+
+  .cart-List {
+    width: 90%;
+
+    ul {
+      border: 0.2rem solid rgb(203, 203, 203);
+      border-radius: 1rem;
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      width: 95%;
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 1rem;
+
+        @media screen and (max-width: v.$sm-breakpoint) {
+          flex-direction: column;
+        }
+
+        .Cart-Image {
+          width: 15%;
+          height: 10rem;
+
+          @media screen and (max-width: v.$sm-breakpoint) {
+            width: 40%;
+            height: 20vh;
+          }
+
+          img {
+            border-radius: 1rem;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .iconSupp {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+}

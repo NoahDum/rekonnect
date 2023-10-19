@@ -1,0 +1,452 @@
+@use "variables" as v;
+@use "mixins" as m;
+@use "reset";
+@use "Header";
+
+.profile {
+  color: white;
+
+  .contain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    text-align: center;
+    color: v.$color-primary;
+  }
+
+  .profile-nav {
+    background-color: white;
+    border-radius: 1rem;
+    width: 60vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    padding: 10px;
+
+    @media screen and (max-width: v.$sm-breakpoint) {
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 80%;
+    }
+
+    .Wallet-link {
+      @media screen and (max-width: v.$sm-breakpoint) {
+        flex-basis: 45%;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: v.$color-primary;
+      position: relative;
+
+      @media screen and (max-width: v.$sm-breakpoint) {
+        flex-basis: 45%;
+        text-align: center;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: v.$color-primary;
+        transition: width 0.3s ease-in-out;
+      }
+
+      &:hover::before {
+        width: 100%;
+      }
+    }
+  }
+
+  .flex-profil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    color: black;
+    width: 70vw;
+    border-radius: 10px;
+    margin-top: 40px;
+    padding: 20px;
+
+    @media screen and (max-width: v.$sm-breakpoint) {
+      width: 80%;
+    }
+
+    #profil {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      align-content: center;
+      width: 85%;
+
+      @media screen and (max-width: v.$sm-breakpoint) {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 55%;
+        padding: 0 70px;
+        border: 0.2rem solid rgb(203, 203, 203);
+        border-radius: 10px;
+
+        @media screen and (max-width: v.$sm-breakpoint) {
+          border: none;
+        }
+
+        ul {
+          width: 32rem;
+          list-style: none;
+          display: flex;
+          justify-content: center;
+          padding: 0;
+
+          li {
+            padding: 2rem;
+
+            img {
+              width: 5rem;
+              margin: 0 2rem;
+            }
+          }
+        }
+      }
+
+      .perso-info {
+        background-color: white;
+        color: v.$color-primary;
+        margin-top: 20px;
+        text-align: center;
+        border-radius: 20px;
+        max-width: 40%;
+
+        @media screen and (max-width: v.$sm-breakpoint) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          max-width: 90%;
+        }
+
+        p {
+          border: 0.2rem solid rgb(203, 203, 203);
+          max-width: 100%;
+
+          @media screen and (max-width: v.$sm-breakpoint) {
+            border-radius: 10px;
+            width: 90%;
+            align-items: center;
+            padding: 5px;
+          }
+        }
+      }
+    }
+
+    .btn_modif {
+      width: 50rem;
+      height: 5rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: v.$color-white;
+      background-color: v.$color-primary;
+      padding: 0 5px;
+      border-radius: 15px;
+      border: 2px solid v.$color-primary;
+      margin-top: 10px;
+
+      @media screen and (max-width: v.$sm-breakpoint) {
+        width: 50%;
+        padding: 5px;
+      }
+
+      &:hover {
+        background-color: white;
+        color: v.$color-primary;
+        border: 2px solid v.$color-primary;
+      }
+    }
+  }
+}
+
+.profil {
+  width: 10rem;
+  height: 10rem;
+  text-align: center;
+  background-color: #6a5ded;
+  margin: 20px 3rem;
+  border-radius: 50px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+  position: relative;
+}
+
+h3 {
+  text-align: center;
+}
+
+.list-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+
+  .list {
+    width: 90%;
+    color: v.$color-primary;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 40px;
+    margin-top: 10px;
+    border-radius: 10px;
+
+    @media screen and (max-width: v.$sm-breakpoint) {
+      width: 100%;
+      padding: 10px 20px;
+    }
+
+    img {
+      max-height: 12vh;
+      max-width: 35%;
+      border-radius: 5px;
+    }
+
+    .description {
+      max-width: 30%;
+      text-align: center;
+
+      @media screen and (max-width: v.$sm-breakpoint) {
+        display: none;
+      }
+    }
+
+    .fakeImage {
+      background-color: v.$color-secondary;
+      height: 20vh;
+      width: 15vw;
+    }
+
+    .fakeProfil {
+      background-color: v.$color-secondary;
+      padding: 25px;
+      border-radius: 50px;
+    }
+
+    .link {
+      display: flex;
+      justify-content: space-between;
+      width: 10%;
+    }
+  }
+}
+
+#buy,
+#sell,
+#repare {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h3 {
+    color: v.$color-primary;
+    margin: 15px 0;
+  }
+}
+
+.ant-modal-root {
+  .ant-modal-content {
+    background-color: v.$color-primary;
+    color: v.$color-white;
+    text-align: center;
+
+    .ant-modal-header {
+      background: none;
+      color: v.$color-white;
+    }
+
+    .ant-modal-body {
+      form {
+        display: flex;
+        flex-direction: column;
+
+        input.item {
+          width: 40rem;
+          height: 3.5rem;
+          font-weight: bold;
+          font-size: 1.3rem;
+          text-align: center;
+          border-radius: 0.5rem;
+          margin: 0.5rem 0;
+
+          @media (max-width: v.$sm-breakpoint) {
+            width: 30rem;
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        .checkbox-group {
+          display: flex;
+
+          .flex-check {
+            width: 16rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            font-size: 1.5rem;
+
+            input {
+              transform: scale(2);
+            }
+          }
+        }
+
+        .submit_update_profile {
+          width: 30rem;
+          height: 3.5rem;
+          border-radius: 0.5rem;
+          border: v.$color-white solid 0.1rem;
+          align-self: center;
+          font-weight: bold;
+          margin: 2rem 0 0 0;
+
+          @media (max-width: v.$sm-breakpoint) {
+            width: 20rem;
+          }
+
+          &:hover {
+            background-color: v.$color-primary;
+            color: v.$color-white;
+          }
+        }
+      }
+    }
+
+    .ant-modal-close {
+      color: v.$color-white;
+    }
+
+    .ant-modal-title {
+      color: v.$color-white;
+    }
+  }
+}
+
+.modal-error {
+  .ant-modal-body {
+
+    ul {
+      display: flex;
+      li {
+      color: v.$color-white;
+      div {
+        margin: 0 0.5rem;
+      }
+      svg {
+        margin-top: 0.5rem;
+      }
+    }
+    }
+    
+  }
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .upload {
+    margin-top: 5px;
+    cursor: pointer;
+  }
+
+  .avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 20px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+#wallet {
+  @media screen and (max-width: v.$sm-breakpoint) {
+    width: 80%;
+  }
+}
+
+.wallet-flex {
+  margin-top: 40px;
+  width: 70vw;
+  background-color: v.$color-white;
+  color: v.$color-primary;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (max-width: v.$sm-breakpoint) {
+    width: 100%;
+  }
+
+  .boutons {
+    width: 50%;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    display: flex;
+
+    @media screen and (max-width: v.$sm-breakpoint) {
+      width: 80%;
+      /* flex-direction: column; */
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    button {
+      width: 30%;
+      text-decoration: none;
+      color: v.$color-white;
+      background-color: v.$color-primary;
+      padding: 10px 5px;
+      border-radius: 15px;
+      border: 2px solid v.$color-primary;
+      margin-top: 10px;
+
+      @media screen and (max-width: v.$sm-breakpoint) {
+        width: 25vw;
+      }
+
+      &:hover {
+        background-color: white;
+        color: v.$color-primary;
+        border: 2px solid v.$color-primary;
+      }
+    }
+  }
+}

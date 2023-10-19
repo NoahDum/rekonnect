@@ -1,0 +1,128 @@
+@use "variables" as v;
+@use "mixins" as m;
+@use "reset";
+@use "Header";
+
+.repare {
+    margin-top: 8vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.repare-contain {
+    display: flex;
+    flex-direction: column;
+    min-height: 85vh;
+
+    .details-repare {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        a {
+            display: flex;
+            width: 15vw;
+            justify-content: space-around;
+            align-items: center;
+            text-decoration: none;
+            color: v.$color-white;
+            background-color: v.$color-primary;
+            border-radius: 15px;
+            border: 2px solid v.$color-primary;
+
+            @media screen and (max-width: v.$sm-breakpoint) {
+                width: auto;
+                padding: 0 10px;
+            }
+
+            &:hover {
+                background-color: v.$color-white;
+                color: v.$color-primary;
+                border: 2px solid v.$color-primary;
+            }
+        }
+    }
+
+    .flexRepare {
+        display: flex;
+        justify-content: center;
+
+        @media screen and (max-width: v.$sm-breakpoint) {
+            width: 90%;
+        }
+    }
+
+    .repare-profile {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        justify-content: space-between;
+        border: 0.1px solid v.$color-primary;
+        border-radius: 20px;
+        padding: 10px 50px;
+
+
+        @media screen and (max-width: v.$sm-breakpoint) {
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .repare-avatar {
+            max-width: 20vh;
+
+            @media screen and (max-width: v.$sm-breakpoint) {
+                height: 35%;
+                width: 70%;
+            }
+
+            .avatar {
+                height: 100%;
+                width: 100%;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+
+
+        .repare-contact {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            .contact-link {
+                display: flex;
+
+                @media screen and (max-width: v.$sm-breakpoint) {
+                    flex-direction: column;
+                }
+
+                a {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    text-decoration: none;
+                    color: v.$color-white;
+                    background-color: v.$color-primary;
+                    border-radius: 15px;
+                    border: 2px solid v.$color-primary;
+                    margin-bottom: 10px;
+                    margin-left: 10px;
+                    padding: 0 10px;
+
+                    &:hover {
+                        background-color: v.$color-white;
+                        color: v.$color-primary;
+                        border: 2px solid v.$color-primary;
+                    }
+                }
+            }
+        }
+    }
+}

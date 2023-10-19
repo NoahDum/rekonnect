@@ -1,0 +1,104 @@
+@use "variables" as v;
+@use "mixins" as m;
+@use "reset";
+
+.product-picture {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    label {
+        color: v.$color-white;
+    }
+
+    input {
+        color: v.$color-primary;
+    }
+}
+
+.PostForm {
+    min-height: 78vh;
+    text-align: center;
+    h1{
+        color: v.$color-primary;
+    }
+    form {
+        margin-top: 10%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        @media screen and (max-width: v.$sm-breakpoint) {
+            margin-top: 20%;
+        }
+
+        .product-picture {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            input{
+                display: none;
+            }
+            label {
+                color: rgb(97, 97, 97);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 80%;
+                text-align: center;
+                height: 4vh;
+                border-radius: 20px;
+                background-color: white;
+                margin-bottom: 10px;
+                border: #234976 solid 0.2rem;
+                font-size: small;
+            }
+        }
+
+        .PostItem {
+            width: 90%;
+            text-align: center;
+
+            input,
+            select {
+                width: 80%;
+                text-align: center;
+                height: 4vh;
+                border-radius: 20px;
+                background-color: v.$color-white;
+                margin-bottom: 10px;
+                border: v.$color-primary solid 0.2rem;
+
+                @media screen and (max-width: v.$sm-breakpoint) {
+                    height: 5vh;
+                }
+            }
+        }
+
+        .Submit {
+            width: 20%;
+            padding: 2vh;
+            border: v.$color-primary solid 0.1rem;
+            border-radius: 0.5rem;
+            background-color: v.$color-secondary;
+
+            @media (max-width: v.$md-breakpoint) {
+                width: 20rem;
+            }
+
+            &:hover {
+                background-color: v.$color-primary;
+                color: v.$color-white;
+            }
+        }
+
+
+
+        .search-submit {
+            width: 45%;
+        }
+    }
+
+}
