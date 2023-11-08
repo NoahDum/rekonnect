@@ -13,14 +13,20 @@ const MySell = () => {
   const dataUser = JSON.parse(localStorage.getItem("user"));
 
   //function fetch de get mySell pour eviter les répétition de code
-
+  const token = dataUser.token
   let functionGetMySell = (link) => {
     const getMySells = async () => {
-      let dataMysells = await fetch(link).then((res) => res.json());
+      const headers = {
+        'Authorization': `Bearer ${token}`, // Ajoutez le jeton à l'en-tête
+      };
+      let dataMysells = await fetch(link, {
+        headers: headers, // Ajoutez les en-têtes à la requête 
+      }).then((res) => res.json());
       setMySells(dataMysells);
     };
     getMySells();
   };
+
 
   useEffect(() => {
     functionGetMySell(
@@ -40,9 +46,7 @@ const MySell = () => {
         ` http://localhost/php/rekonnect_api/public/?page=sell&id=${mySellId}`,
         {
           method: "PUT",
-          headers: {
-            "Content-Type": "application/json;charset=utf-8",
-          },
+          headers: { "Content-Type": "application/json;charset=utf-8",  'Authorization': `Bearer ${token}`, },
           body: JSON.stringify(newMySell),
         }
       ).then((res) => res.json());
@@ -56,6 +60,7 @@ const MySell = () => {
       await fetch(
         `http://localhost/php/rekonnect_api/public/?page=sell&id=${mysell.id}`,
         {
+          headers: { "Content-Type": "application/json;charset=utf-8",  'Authorization': `Bearer ${token}`, },
           method: "DELETE",
         }
       ).then((res) => res.json());

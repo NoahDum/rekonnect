@@ -31,11 +31,13 @@ const PostRepare = () => {
         users_id: users_id,
         description: description,
       };
+      const token = dataUser.token
+
       await fetch(
         "http://localhost/php/rekonnect_api/public/?page=postrepare",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json;charset=utf-8" },
+          headers: { "Content-Type": "application/json;charset=utf-8",  'Authorization': `Bearer ${token}`, },
           body: JSON.stringify(dataUser),
         }
       ).then((res) => res.json());

@@ -15,9 +15,15 @@ const Myrepare = () => {
   const dataUser = JSON.parse(localStorage.getItem("user"));
   const formRef = useRef();
 
+  const token = dataUser.token
   let functionGetMyRepare = (link) => {
     const getMyRepare = async () => {
-      let dataMyrepare = await fetch(link).then((res) => res.json());
+      const headers = {
+        'Authorization': `Bearer ${token}`, // Ajoutez le jeton à l'en-tête
+      };
+      let dataMyrepare = await fetch(link, {
+        headers: headers, // Ajoutez les en-têtes à la requête 
+      }).then((res) => res.json());
       setMyRepare(dataMyrepare);
     };
     getMyRepare();
@@ -38,12 +44,12 @@ const Myrepare = () => {
         repareprice: repareprice,
         reparedescription: reparedescription,
       };
-
+      const token = dataUser.token
       await fetch(
         `http://localhost/php/rekonnect_api/public/?page=Repare&id=${myrepare.id}`,
         {
           method: "PUT",
-
+          headers: { "Content-Type": "application/json;charset=utf-8",  'Authorization': `Bearer ${token}`, },
           body: JSON.stringify(newReparePost),
         }
       ).then((response) => response.json());
@@ -55,9 +61,11 @@ const Myrepare = () => {
     }
 
     let deleteRepare = async () => {
+      const token = dataUser.token
       await fetch(
         `http://localhost/php/rekonnect_api/public/?page=Repare&id=${myrepare.id}`,
         {
+          headers: { "Content-Type": "application/json;charset=utf-8",  'Authorization': `Bearer ${token}`, },
           method: "DELETE",
         }
       ).then((res) => res.json());

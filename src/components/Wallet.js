@@ -19,34 +19,36 @@ const Wallet = () => {
         const errorMsg = [];
 
         if (errorMsg.length === 0) {
-                let newSolde = ""
-                if (addSold !== ""){
-                    newSolde = +addSold + +dataUser.wallet
-                    setSold("")
-                }
-                let newSold = ""
-                if(supSold !== ""){
-                    newSold = dataUser.wallet - supSold
-                    setSupSold("")
-                }
-                
-                
-                const newWallet = {
-                    id: dataUser.id,
-                    sold: addSold? newSolde : newSold
-                };
+            let newSolde = ""
+            if (addSold !== "") {
+                newSolde = +addSold + +dataUser.wallet
+                setSold("")
+            }
+            let newSold = ""
+            if (supSold !== "") {
+                newSold = dataUser.wallet - supSold
+                setSupSold("")
+            }
 
+
+            const newWallet = {
+                id: dataUser.id,
+                sold: addSold ? newSolde : newSold
+            };
+
+
+            const token = dataUser.token
 
             await fetch(
                 "http://localhost/php/rekonnect_api/public/?page=soldUpdate",
                 {
                     method: "PUT",
-                    headers: { "Content-Type": "application/json;charset=utf-8" },
+                    headers: { "Content-Type": "application/json;charset=utf-8",  'Authorization': `Bearer ${token}`, },
                     body: JSON.stringify(newWallet),
                 }
             ).then((response) => response.json());
 
-            dataUser.wallet = addSold? newSolde : newSold;
+            dataUser.wallet = addSold ? newSolde : newSold;
             localStorage.setItem("user", JSON.stringify(dataUser));
             setModalAdd(false);
             setModalRemove(false);

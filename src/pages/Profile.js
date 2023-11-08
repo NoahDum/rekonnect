@@ -147,11 +147,12 @@ const Profile = () => {
         phone: phone,
       };
 
+      const token = dataUser.token
       const data = await fetch(
         "http://localhost/php/rekonnect_api/public/?page=dataupdate",
         {
-          method: "POST",
-          headers: { "Content-Type": "application/json;charset=utf-8" },
+          method: "PUT",
+          headers: { "Content-Type": "application/json;charset=utf-8",  'Authorization': `Bearer ${token}` },
           body: JSON.stringify(newDataUser),
         }
       ).then((response) => response.json());

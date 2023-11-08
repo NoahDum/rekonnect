@@ -35,30 +35,33 @@ const PostSell = () => {
       description &&
       price
     ) {
-      // const dataUser = {
-      //     productName: productName,
-      //     // inputPictureTwo: inputPictureTwo,
-      //     inputPictureOne: file,
-      //     description: description,
-      //     price: price,
-      // };
-      const formData = new FormData();
-      formData.append("inputPictureOne", file);
-      formData.append("productName", productName);
-      formData.append("description", description);
-      formData.append("price", price);
-      formData.append("userName", userName);
-      formData.append("users_id", users_id);
-
+      const DataUser = {
+          productName: productName,
+          // inputPictureTwo: inputPictureTwo,
+          inputPictureOne: file,
+          description: description,
+          price: price,
+      };
+      console.log(DataUser)
+      // const formData = new FormData();
+      // formData.append("inputPictureOne", file);
+      // formData.append("productName", productName);
+      // formData.append("description", description);
+      // formData.append("price", price);
+      // formData.append("userName", userName);
+      // formData.append("users_id", users_id);
+      // console.log(formData)
+      const token = dataUser.token
       await fetch(
         "http://localhost/php/rekonnect_api/public/?page=postsell",
         {
           method: "POST",
-          body: formData,
+          headers: { "Content-Type": "application/json;charset=utf-8",  'Authorization': `Bearer ${token}`, },
+          body: DataUser,
         }
       ).then((response) => response.json());
 
-      navigate("/sell");
+      // navigate("/sell");
     }
     setErrors(newErrors);
   }

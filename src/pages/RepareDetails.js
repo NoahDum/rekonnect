@@ -14,11 +14,19 @@ const RepareDetails = () => {
   const [details, setDetails] = useState({});
   const id = useParams().id;
   const dispatch = useDispatch();
+  const dataUser = JSON.parse(localStorage.getItem("user"));
+
 
   useEffect(() => {
     const getDetailProduct = async () => {
+      const token = dataUser.token
+      const headers = {
+        'Authorization': `Bearer ${token}`, // Ajoutez le jeton à l'en-tête
+      };
       const dataDetailProduct = await fetch(
-        `http://localhost/php/rekonnect_api/public/?page=Repare&id=${id}`
+        `http://localhost/php/rekonnect_api/public/?page=Repare&id=${id}`, {
+          headers: headers, // Ajoutez les en-têtes à la requête 
+        }
       ).then((res) => res.json());
       setDetails(dataDetailProduct);
     };

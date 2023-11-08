@@ -16,6 +16,8 @@ const Cart = () => {
   const currentCart = useSelector((state) => state.cart);
   const currentUser = useSelector((state) => state.user);
   const [msgUser, setMsgUser] = useState("");
+  const dataUser = JSON.parse(localStorage.getItem("user"));
+
 
   const handleDelete = (itemId) => {
     dispatch(deleteItem({ itemId }));
@@ -24,7 +26,8 @@ const Cart = () => {
   const objectIds = currentCart.items.map((item) => item.itemId);
 
   const handlepayment = async () => {
-    
+    const token = dataUser.token
+
     if (objectIds.length !== 0) {
       const data = await fetch(
         "http://localhost/php/rekonnect_api/public/?page=payment",
@@ -32,6 +35,7 @@ const Cart = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`,
           },
           body: JSON.stringify({
             user_id: currentUser.id,
@@ -68,9 +72,9 @@ const Cart = () => {
             src="/assets/img/cart-image.png"
             alt="fond sch_rep"
           />
-           <div className="head-page">
-                <h1 className="ProfilTitle">Votre Panier</h1>
-              </div>
+          <div className="head-page">
+            <h1 className="ProfilTitle">Votre Panier</h1>
+          </div>
         </div>
         <div className="cart-List">
           <ul>
@@ -114,7 +118,7 @@ const Cart = () => {
           </div>
         </Modal>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
